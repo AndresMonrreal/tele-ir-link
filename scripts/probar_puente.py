@@ -4,7 +4,7 @@ import time
 import serial
 
 BAUDIOS = 115200
-MENSAJE_PRUEBA = bytes([0x7E, 0x00, 0x00, 0x02, 0x48, 0x68])
+MENSAJE_PRUEBA = bytes([0x7E, 0x00, 0x00, 0x02, 0x48, 0x69]) * 20
 
 def abrir(puerto: str) -> serial.Serial:
     ser = serial.Serial(puerto, BAUDIOS, timeout=0.2)
