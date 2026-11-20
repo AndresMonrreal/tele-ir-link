@@ -16,3 +16,11 @@
 - El LED IR emite en un cono angosto: tiene que apuntar al domo del receptor.
 - El control del kit usa pila CR2025.
 - Unos 68 cambios = una trama NEC del control (sirve para saber que el receptor funciona).
+- `IrSender` de IRremote no emitía nada con nuestro core de ESP32 (las pruebas A→B daban 0 bytes).
+  Solución: generar la trama NEC a mano con `ledcAttach`/`ledcWrite` a 38 kHz
+  (encabezado 9 ms + 4.5 ms, bits por distancia de pulsos: 560/560 µs = 0, 560/1690 µs = 1).
+  IRremote se usa solo para recibir.
+- Windows cambia el número de COM al reconectar: verificar con
+  `[System.IO.Ports.SerialPort]::GetPortNames()` antes de cada prueba.
+- "Access is denied" = otro programa (Monitor Serie, otro script) tiene el puerto abierto.
+- Prueba de enlace: `uv run python scripts\probar_enlace.py COMtx COMrx` → 30/30 bytes en ambos sentidos.
