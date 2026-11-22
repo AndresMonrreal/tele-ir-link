@@ -33,7 +33,7 @@ class ConfigRuido:
     # Probabilidad de que una transmisión no llegue (señal perdida)
     prob_perdida: float = 0.0
 
-class CanalSimulado:
+class CanalSimulado(Canal):
 
     def __init__(self, config: ConfigRuido, rng: random.Random) -> None:
         self.config = config
