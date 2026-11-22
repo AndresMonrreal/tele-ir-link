@@ -12,7 +12,7 @@ class Canal(ABC):
         """Manda una secuencia de bytes al otro extremo"""
 
     @abstractmethod
-    def resibir(self, timeout: float = 1.0) -> bytes | None:
+    def recibir(self, timeout: float = 1.0) -> bytes | None:
         """Devuelve lo siguiente que llegó, o None si no llegó nada a tiempo"""
 
 @dataclass 
